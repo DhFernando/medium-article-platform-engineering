@@ -1,0 +1,33 @@
+version: "3"
+services:
+  nextjs-application:
+    container_name: nextjs-application
+    build:
+      context: .
+      dockerfile: nextjs-application/Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+
+  mono-app-1:
+    container_name: mono-app-1
+    build:
+      context: .
+      dockerfile: nest-mono-applications/Dockerfile
+      args:
+        - APP=mono-app-1
+    restart: always
+    ports:  
+      - 3001:3000
+
+  mono-app-2:
+    container_name: mono-app-2
+    build:
+      context: .
+      dockerfile: nest-mono-applications/Dockerfile
+      args:
+        - APP=mono-app-2
+    restart: always
+    ports:
+      - 3002:3000
+
